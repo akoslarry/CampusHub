@@ -95,21 +95,10 @@
 
 | 组件类型 | 数量 | 说明 |
 |---|---|---|
-| **Activity** | 1 | MainActivity 单体架构，按 Tab 方法划分归属（成员A：首页+课表 / 成员B：外卖+教室 / 成员C：待办 / 成员D：论坛+闲置+我的） |
-| **Service** | 4 | ScheduleSyncService / FoodOrderService / TaskReminderService / MarketSettlementService（每人1个前台 Service） |
+| **Activity** | 1 | MainActivity 单体架构，承载全部 9 个 Tab |
+| **Service** | 4 | ScheduleSyncService / FoodOrderService / TaskReminderService / MarketSettlementService |
 | **BroadcastReceiver** | 5 | ScheduleSyncReceiver / FoodOrderReceiver / ReminderReceiver / BootReceiver / MarketSettlementReceiver |
-| **ContentProvider** | 4 | CourseProvider / FoodOrderProvider / TaskProvider / CommunityProvider（每人1个） |
-
----
-
-## 👥 团队分工
-
-| 角色 | 成员 | 负责模块 | 核心贡献 |
-|---|---|---|---|
-| 🏗️ **架构师/组长** | 成员A | 框架 + 首页 + 课程表 | 项目架构搭建、MainActivity 骨架、登录注册、自研 xlsx 解析器、导航栏、数据库设计、系统集成 |
-| 🍔 **外卖/教室** | 成员B | 校园外卖 + 教室预约 | 商家菜品购物车下单、订单状态流转、分时段教室预约、跨账户互斥、预约持久化 |
-| ✅ **待办/提醒** | 成员C | 待办提醒 + 通知系统 | 任务 CRUD、AlarmManager 精确调度、通知渠道、开机自启恢复、ReminderScheduler |
-| 💬 **社区/交易** | 成员D | 论坛 + 闲置 + 钱包 + 我的 | 版块管理、帖子/评论、闲置竞价售卖、钱包系统、个人信息、2% 平台费结算 |
+| **ContentProvider** | 4 | CourseProvider / FoodOrderProvider / TaskProvider / CommunityProvider |
 
 ---
 
@@ -192,7 +181,7 @@ BeiXinKeYouPin-glass-depth-source/
 │   │   └── test/                               # 单元测试（10 个测试类）
 │   └── build.gradle                            # 应用构建配置
 ├── docs/
-│   └── 团队分工与四大组件对应文档.md              # 详细分工文档
+│   └── 四大组件对应文档.md                        # 组件设计文档
 ├── build.gradle                                # 项目构建配置
 ├── settings.gradle                             # 项目设置
 ├── gradle.properties                           # Gradle 属性
