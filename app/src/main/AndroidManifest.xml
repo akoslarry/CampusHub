@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".reminder.ReminderReceiver"
+            android:exported="false" />
+        <receiver
+            android:name=".reminder.CourseReminderReceiver"
+            android:exported="false" />
+        <receiver
+            android:name=".reminder.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 成员A：课表同步 Service + Receiver + Provider -->
+        <service
+            android:name=".service.ScheduleSyncService"
+            android:exported="false" />
+        <receiver
+            android:name=".receiver.ScheduleSyncReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.campustask.ACTION_SCHEDULE_SYNC" />
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name=".provider.CourseProvider"
+            android:authorities="com.example.campustask.course"
+            android:exported="false" />
+
+        <!-- 成员B：外卖订单 Service + Receiver + Provider -->
+        <service
+            android:name=".service.FoodOrderService"
+            android:exported="false" />
+        <receiver
+            android:name=".receiver.FoodOrderReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.campustask.ACTION_FOOD_ORDER_CHECK" />
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name=".provider.FoodOrderProvider"
+            android:authorities="com.example.campustask.foodorder"
+            android:exported="false" />
+
+        <!-- 成员C：任务提醒 Service + Provider（Receiver已有） -->
+        <service
+            android:name=".service.TaskReminderService"
+            android:exported="false" />
+        <provider
+            android:name=".provider.TaskProvider"
+            android:authorities="com.example.campustask.task"
+            android:exported="false" />
+
+        <!-- 成员D：闲置交易结算 Service + Receiver + Provider -->
+        <service
+            android:name=".service.MarketSettlementService"
+            android:exported="false" />
+        <receiver
+            android:name=".receiver.MarketSettlementReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.campustask.ACTION_MARKET_SETTLEMENT" />
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name=".provider.CommunityProvider"
+            android:authorities="com.example.campustask.community"
+            android:exported="false" />
+    </application>
+</manifest>

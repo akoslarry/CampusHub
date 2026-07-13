@@ -1,0 +1,47 @@
+# Android
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build/
+/captures
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Android Studio
+*.iml
+.idea/
+.gradle/
+local.properties
+build/
+app/build/
+*.jks
+*.keystore
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Generated
+app/release/
+app/debug/
+*.log
+*.hprof
+
+# Module
+.idea/modules.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/workspace.xml
